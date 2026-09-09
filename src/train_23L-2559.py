@@ -12,6 +12,8 @@ data = pd.read_csv("data/dataset.csv")
 X = data.drop(columns=["target"])
 y = data["target"]
 
+# Normalization: Min-Max scaling before splitting
+X = (X - X.min()) / (X.max() - X.min())
 # --- Train/test split ---
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
